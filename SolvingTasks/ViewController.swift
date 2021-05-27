@@ -223,9 +223,178 @@ class ViewController: UIViewController {
         }
         //******************************************************
         
+        /*
+         Задача №12 - Поиск самого длинного префикса
+         Задание: написать функцию, которая принимает строку, состоящую из слов с похожими префиксами, раздленных пробелами и возвращает самый длинный префикс, который встречается в каждом слове (swift switch swill swim  вернет swi)
+         Решение:
+         */
+        func prefix(input: String) -> String {
+            let parts = input.components(separatedBy: " ")
+            guard let first = parts.first else { return "" }
+            
+            var currentPrefix = ""
+            var bestPrefix = ""
+            
+            for element in first {
+                currentPrefix.append(element)
+                
+                for word in parts {
+                    if !word.hasPrefix(currentPrefix) {
+                        return bestPrefix
+                    }
+                }
+                bestPrefix = currentPrefix
+            }
+            return bestPrefix
+        }
+                        
+        //******************************************************
         
+        /*
+         Задача №13 - Повтороение символа в ряду
+         Задание: написать функцию, которая принимает строку и возвращает строку, соодержащую символ и количество его повторений в ряду ("aaabbcccc" -> "a3b2c4")
+         Решение:
+         */
         
+        func newString(input: String) -> String {
+            var currentLetter: Character?
+            var returnString = ""
+            var letterCount = 0
+            
+            for letter in input {
+                if letter == currentLetter {
+                    letterCount += 1
+                } else {
+                    if let current = currentLetter {
+                        returnString.append("\(current)\(letterCount)")
+                    }
+                    currentLetter = letter
+                    letterCount = 1
+                }
+            }
+            
+            if let current = currentLetter {
+                returnString.append("\(current)\(letterCount)")
+            }
+            
+            return returnString
+        }
         
+        //******************************************************
+        
+        /*
+         Задача №14 - перевернуть слова в строке
+         Задание: написать функцию, которая принимает строку и возвращает эту же строку, каждое слово которой записано в обратном порядке, без использования цикла
+         Решение:
+         */
+        
+        func reverse(input: String) -> String {
+            let parts = input.components(separatedBy: " ")
+            let reversed = parts.map{ String($0.reversed()) }
+            return reversed.joined(separator: " ")
+        }
+        
+        //******************************************************
+        
+        /*
+         Задача №15 - Остаток от деления
+         Задание: написать функцию, которая считает от 1 до 100 и печатает Three если число делится на три, Five если на пять и Three five если на 3 и 5
+         Решение:
+         */
+        
+        func threeAndFive() {
+            for item in 1...100 {
+                if item % 3 == 0 && item % 5 == 0 {
+                    print("Three Five")
+                } else if item % 3 == 0 {
+                    print("Three")
+                } else if item % 5 == 0 {
+                    print("Five")
+                } else {
+                    print(item)
+                }
+            }
+        }
+        
+        //******************************************************
+        
+        /*
+         Задача №16 - сгенерировать рандомное число из диапазона
+         Задание: написать функцию, ктоорая принимает два числа, минимальное и наксимальное значение диапазона и возвращает рандомное число из этого диапазона,включительно
+         Решение:
+         */
+        func random(min: Int, max: Int) -> Int {
+            return Int.random(in: min...max)
+        }
+        
+        //******************************************************
+        
+        /*
+         Задача №17 - возведение одного числа в степень другого
+         Задание: функция, принимает два положительных числа и возмодит первое в степень второго
+         Решение:
+         */
+        func power(first: Double, second: Double) -> Double {
+            guard first > 0, second > 0 else { return 0 }
+            let inPower = pow(first, second)
+            return inPower
+        }
+        
+        //******************************************************
+        
+        /*
+         Задача №18 - поменять два числа местами
+         Задание: поменять два числа местами без использования промежуточной переменной
+         Решение:
+         */
+        func reverse() {
+            //first
+            var a = 10
+            var b = 5
+            
+            a = a + b
+            b = a - b
+            a = a - b
+            //second
+            swap(&a, &b)
+            //third
+            (a, b) = (b, a)
+        }
+        
+        //******************************************************
+        
+        /*
+         Задача №19 - найти простое число
+         Задание: написать функцию, которая принимает число (Int) и возвращает true, если это число является простым (делится только на 1 и на себя)
+         Решение:
+         */
+        func simpleValue(input: Int) -> Bool {
+            guard input >= 2 else { return false }
+            
+            for i in 2 ..< input {
+                if input % i == 0 {
+                    return false
+                }
+            }
+            return true
+        }
+        
+        //******************************************************
+        
+        /*
+         Задача №20 - число единиц в бинарном представлении
+         Задание: написать функцию, которая принимает положительное число (Int) и возвращает два числа - следующее за ним число с атким же количеством единиц в бинарном представлении и предыдущее число единиц с таким же количество единиц. Если такого числа нет, то возвращается nil. Пример: число 12 в бинарном представлении равно 1100, следующее число с 2 единицами это 17 (10001), а предыдущее число 10(1010)
+         Решение:
+         */
+        
+        func binary() {
+            
+            
+            
+            
+        }
+        
+        //******************************************************
         
     }
 }
