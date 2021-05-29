@@ -8,10 +8,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         //******************************************************
         //Задача №1 -  Проверка символов в строке на уникальность
         //написать функцию, которая принимает строку и возвращает true, если строка содержит только уникальные символы
@@ -75,7 +75,7 @@ class ViewController: UIViewController {
         func customContains(str1: String, str2: String)-> Bool {
             return str1.lowercased().contains(str2.lowercased())
         }
-
+        
         //******************************************************
         
         //Задача №5
@@ -173,7 +173,7 @@ class ViewController: UIViewController {
             return letter.count == 26
         }
         //******************************************************
-
+        
         /*
          Задача №10 - Количество гласных и согласных
          Задание: написать функцию, которая принимает строку и возвращает tuple, содержащий число гласных и согласных букв данной строки.
@@ -195,7 +195,7 @@ class ViewController: UIViewController {
             }
             return (vowelsCount, consonatCount)
         }
-            
+        
         //******************************************************
         
         /*
@@ -247,7 +247,7 @@ class ViewController: UIViewController {
             }
             return bestPrefix
         }
-                        
+        
         //******************************************************
         
         /*
@@ -422,7 +422,7 @@ class ViewController: UIViewController {
          Задание: написать расширение для коллекции (тип данных Int), возвращающее число раз, которое определенная цифра встречалась во всех числах коллекции.
          Решение:
          */
-        
+        /*
         extension Collection where Iterator.Element == Int {
             func repetition(digit: Character) -> Int {
                 var total = 0
@@ -431,23 +431,32 @@ class ViewController: UIViewController {
                     let str = String(item)
                     
                     for letter in str {
-                    if letter == digit {
-                        total += 1
+                        if letter == digit {
+                            total += 1
+                        }
                     }
                 }
+                return total
             }
-            return total            
         }
-        
+        */
         
         //******************************************************
         /*
-         Задача №19 -
-         Задание: написать функцию,
+         Задача №23 - сортировка коллекции по возрастанию до N
+         Задание: написать расширение для коллекции, возвращающее N наименьших элементов, отсортированных по возрастанию, где N имеет тип данных Int.
+         Например, [1,4,6,2].sortwedUpToN вернет [1,2,4] если N = 3
          Решение:
          */
         
-                
+        /*
+        extension Collection where Iterator.Element: Comparable {
+            func sortUpToN(number: Int) -> [Iterator.Element] {
+                let sorted = self.sorted()
+                return Array(sorted.prefix(number))
+            }
+        }
+        */
         
         //******************************************************
         /*
